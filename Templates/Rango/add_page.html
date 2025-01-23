@@ -8,24 +8,26 @@
     
     <body>
     
-        <h1>Add a Category</h1>
+        <h1>Add a Page to {{ category.name }}</h1>
+        
         <div>
         
-            <form id="category_form" method="post" action="/rango/add_category/">
+            <form id="add_page_form" metho="post" action="/rango/category/{{ category.slug }}/add_page/">
+                {% csrf_token %}
                 {% csrf_token %}
                 {% for hidden in form.hidden_fields %}
                     {{ hidden }}
                 {% endfor %}
                 {% for field in form.visible_fields %}
                     {{ field.errors }}
-                    {{ field.help_text }}
+                    {{ field.help_text}}
                     {{ field }}
                 {% endfor %}
-                <input type="submit" name="submit" value="Create Category" />
+                <input type="submit" name="submit" value="Add Page" />
             </form>
         
         </div>
     
     </body>
-    
+
 </html>
