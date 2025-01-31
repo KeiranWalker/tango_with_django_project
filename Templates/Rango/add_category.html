@@ -12,7 +12,6 @@
         
         <form id="category_form" method="post" action="/rango/add_category/">
             {% csrf_token %}
-            {% csrf_token %}
             {% for hidden in form.hidden_fields %}
                 {{ hidden }}
             {% endfor %}
@@ -28,23 +27,3 @@
 
 
 {% endblock %}
-
-
-
-
-
-<!DOCTYPE html>
-
-<html>
-
-    <head>
-        <title>Rango</title>
-    </head>
-    
-    <body>
-    
-        
-    
-    </body>
-    
-</html>

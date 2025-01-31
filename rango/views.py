@@ -16,6 +16,8 @@ def index(request):
     category_list = Category.objects.order_by('-likes')[:5] # Negative indicates descending order
     page_list = Page.objects.order_by('-views')[:5]
 
+    request.session.set_test_cookie()
+
     # Create and populate the context_dict
     context_dict = {}
     context_dict['boldmessage'] = 'Crunchy, creamy, cookie, candy, cupcake!'
@@ -27,6 +29,11 @@ def index(request):
 
 def about(request):
     context_dict = {}
+
+    if request.session.test_cookie_worked():
+        print ("TEST COOKIE WORKED!")
+        request.session.delete_test_cookie()
+
     return render(request, 'rango/about.html', context=context_dict)
 
 def show_category(request, category_name_slug):
